@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subasta a Ciegas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Artículos en Subasta</h1>
+    <div class="items">
+        <#list items as item>
+            <div class="item">
+                <h2>${item.name}</h2>
+                <p>${item.description}</p>
+                <p>Precio Actual: ${item.currentBid} €</p>
+                <a href="/item/${item.id}">Pujar</a>
+            </div>
+        </#list>
+    </div>
+</body>
+</html>
