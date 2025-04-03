@@ -2,53 +2,59 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e3f2fd;
 }
 
 h1 {
     text-align: center;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.login-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f1f1f1;
+/* Contenedor formulario para log in sing up */
+.container-form {
+    background: rgb(224, 215, 215);
+    padding: 40px;
+    width: 380px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px black;
 }
 
 input {
-    margin: 10px;
+    margin: 10px auto;
     padding: 10px;
-    width: 80%;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
 }
 
 button {
-    padding: 10px;
-    width: 80%;
-    background-color: #4CAF50;
+    padding: 12px;
+    width: 70%;
+    background-color: #43afda;
     color: white;
     border: none;
+    border-radius: 6px;
     cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #3399cc;
+    transform: scale(1.01);
 }
 
-.items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px;
+.singup-link {
+    color: black;
+    text-decoration: none; 
 }
 
-.item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
-    width: 250px;
-    background-color: #fff;
+.singup-link:hover {
+    text-decoration: underline;
 }
