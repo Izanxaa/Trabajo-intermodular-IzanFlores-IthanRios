@@ -1,23 +1,33 @@
 /* Estilos de la pagina principal */
+/*header*/
 .header {
-    background-color: rgb(250, 180, 49);
-    padding: 20px;
+    background: linear-gradient(90deg, #f7b733, #fc4a1a);
+    padding: 25px 0;
     color: white;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header .logo h1 {
     font-size: 2rem;
+    margin: 0;
 }
 
 .header nav ul {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    align-items: center;
+    margin-top: 15px;
+    list-style: none;
+    padding: 0;
 }
 
 .header nav ul li {
-    margin: 0 15px;
+    margin: 0 20px;
+    text-decoration: none;
 }
 
 .header nav ul li a {
@@ -25,6 +35,11 @@
     font-size: 1rem;
 }
 
+.header nav ul li a:hover {
+    color: #ffeabf;
+}
+
+/*introduccion de la pagina*/
 .intro {
     background-color: rgb(224, 215, 215);
     text-align: center;
@@ -46,19 +61,64 @@
     text-align: center;
 }
 
-.product-list {
-    
+.product-list h3 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
 }
 
-.product-button {
-
+/*contenedores con los items*/
+.container-container-product {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.product-button:hover {
-
+.product-container {
+    background-color: rgb(224, 215, 215);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px black;
+    padding: 20px;
+    width: 280px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
+.product-container img {
+    width: 100%;
+    border-radius: 5px;
+    height: auto;
+}
 
+.product-container h3 {
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+.product-container p {
+    margin-bottom: 15px;
+}
+
+.product-container button {
+    padding: 12px;
+    width: 70%;
+    background-color: #e25226;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.product-container button:hover {
+    background-color: #dd5d37;
+}
+
+/*footer*/
 .footer {
-
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 50px;
 }
