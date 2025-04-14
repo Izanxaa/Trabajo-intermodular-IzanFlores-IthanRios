@@ -159,6 +159,10 @@ html, body {
     width: 100%; 
 }
 
+.footer img {
+    width: 50px;
+}
+
 
 @media screen and (max-width: 1460px) {
     .container-container-product {
