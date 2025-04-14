@@ -1,3 +1,9 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Calibri', 'Segoe UI', 'Arial', sans-serif;
+}
+
 /* Estilos de la pagina principal */
 /*header*/
 .header {
@@ -5,15 +11,15 @@
     padding: 25px 0;
     color: white;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    position: sticky;
+    box-shadow: 0 4px 6px black;
     top: 0;
     z-index: 1000;
 }
 
-.header .logo h1 {
+.header .logo h2 {
     font-size: 2rem;
     margin: 0;
+    margin-bottom: 30px;
 }
 
 .header nav ul {
@@ -31,12 +37,39 @@
 }
 
 .header nav ul li a {
-    color: white;
-    font-size: 1rem;
+    color: black;
+    font-size: 1.1rem;
+    text-decoration: none;
 }
 
-.header nav ul li a:hover {
-    color: #ffeabf;
+.header nav ul li button {
+    border-radius: 50px;
+    border: 0cm;
+    width: 100px;
+    height: 40px;
+}
+
+/* Estilos buscador */
+.search-bar {
+    text-align: center;
+}
+
+.search-bar input {
+    padding: 8px;
+    width: 200px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 6px 12px;
+    font-size: 1rem;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #eee;
+    cursor: pointer;
 }
 
 /*introduccion de la pagina*/
@@ -68,10 +101,12 @@
 
 /*contenedores con los items*/
 .container-container-product {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 40px;
 }
+
 
 .product-container {
     background-color: rgb(224, 215, 215);
@@ -120,5 +155,28 @@
     color: white;
     text-align: center;
     padding: 15px 0;
-    margin-top: 50px;
+    margin: 0;  
+    width: 100%; 
+}
+
+
+@media screen and (max-width: 1460px) {
+    .container-container-product {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 1072px) {
+    .container-container-product {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 734px) {
+    .container-container-product {
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+    }
 }
