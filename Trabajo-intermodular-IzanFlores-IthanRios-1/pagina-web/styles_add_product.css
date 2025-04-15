@@ -1,0 +1,201 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #fd8966;
+}
+
+/* CONTENEDOR PRINCIPAL FLEXIBLE */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER */
+.header {
+    background: linear-gradient(90deg, #f7b733, #fc4a1a);
+    padding: 25px 0;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 6px black;
+}
+
+.logo h2 {
+    font-size: 2rem;
+    margin: 0 0 20px;
+}
+
+/* NAV + SEARCH */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 30px;
+}
+
+.nav-bar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-bar ul li {
+    margin: 0 10px;
+}
+
+.nav-bar ul li button {
+    border-radius: 50px;
+    border: none;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.search-bar input {
+    padding: 8px;
+    width: 200px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 6px 12px;
+    font-size: 1rem;
+    margin-left: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+/* FORMULARIO */
+.product-form-container {
+    background: white;
+    padding: 40px;
+    width: 700px;
+    max-width: 90%;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    margin: 50px auto;
+    text-align: center;
+}
+
+.product-form-container h2 {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin: 15px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="url"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.image-preview {
+    margin: 15px 0;
+    width: 100%;
+    height: 250px;
+    border: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.image-preview img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.price-section {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.price-section input[type="number"] {
+    width: 150px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #999;
+}
+
+.submit-button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 12px;
+    background-color: #e25226;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-button:hover {
+    background-color: #f0683e;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.footer img {
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.footer a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
