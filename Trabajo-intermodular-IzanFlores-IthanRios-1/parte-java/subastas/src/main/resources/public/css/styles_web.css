@@ -4,10 +4,6 @@ html, body {
     font-family: 'Calibri', 'Segoe UI', 'Arial', sans-serif;
 }
 
-/* Estilos de la pagina principal */
-
-
-/* Estilos buscador */
 .search-bar {
     text-align: center;
 }
@@ -30,7 +26,6 @@ html, body {
     cursor: pointer;
 }
 
-/*introduccion de la pagina*/
 .intro {
     background-color: rgb(224, 215, 215);
     text-align: center;
@@ -57,14 +52,12 @@ html, body {
     margin-bottom: 30px;
 }
 
-/*contenedores con los items*/
 .container-container-product {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 0 40px;
 }
-
 
 .product-container {
     background-color: rgb(224, 215, 215);
@@ -110,7 +103,6 @@ html, body {
     background-color: #dd5d37;
 }
 
-/*footer*/
 .footer {
     background-color: #333;
     color: white;
@@ -123,7 +115,6 @@ html, body {
 .footer img {
     width: 50px;
 }
-
 
 @media screen and (max-width: 1460px) {
     .container-container-product {

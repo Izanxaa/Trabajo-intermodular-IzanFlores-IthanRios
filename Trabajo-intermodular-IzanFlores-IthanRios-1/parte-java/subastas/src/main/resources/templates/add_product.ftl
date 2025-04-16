@@ -34,7 +34,7 @@
         </form>
     </div>
 
-    <!-- FOOTER -->
+
     <footer class="footer">
         <p>2025 AuctionHub. All rights reserved.</p>
         <div>

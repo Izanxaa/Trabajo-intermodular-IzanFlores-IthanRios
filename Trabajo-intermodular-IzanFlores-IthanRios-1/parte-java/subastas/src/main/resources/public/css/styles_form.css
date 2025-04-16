@@ -14,7 +14,6 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Contenedor del formulario */
 .container-form {
     background: white;
     padding: 40px;
@@ -28,7 +27,6 @@ h1 {
     font-size: 18px;
 }
 
-/* Inputs */
 input {
     margin: 10px auto;
     padding: 10px;
@@ -43,7 +41,6 @@ input:focus {
     border-color: #43afda;
 }
 
-/* Botón */
 button {
     padding: 12px;
     width: 90%;
@@ -61,7 +58,6 @@ button:hover {
     background-color: #f0683e;
 }
 
-/* Enlace */
 .singup-link {
     margin-top: 15px;
     color: black;

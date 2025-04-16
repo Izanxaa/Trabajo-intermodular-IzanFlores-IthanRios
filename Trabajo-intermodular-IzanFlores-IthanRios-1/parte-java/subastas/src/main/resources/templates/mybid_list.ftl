@@ -12,7 +12,6 @@
   <div class="main-content">
     <h2 class="my-bids-title">My Participated Bids</h2>
 
-    <!-- Bid item 1 -->
     <div class="bid-item">
       <img src="../public/img/producto-pruebas.jpg" alt="NitroPC">
       <div class="bid-info">
@@ -28,7 +27,6 @@
     </div>
     <hr class="bid-divider">
 
-    <!-- Bid item 2 -->
     <div class="bid-item">
       <img src="../public/img/gaming-laptop.jpg" alt="Gaming Laptop Pro X500">
       <div class="bid-info">
@@ -44,7 +42,6 @@
     </div>
     <hr class="bid-divider">
 
-    <!-- Bid item 3 -->
     <div class="bid-item">
       <img src="../public/img/office-laptop.jpg" alt="Office Laptop Lite 14">
       <div class="bid-info">
