@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Bid Placed</title>
-  <link rel="stylesheet" href="css/styles_add_product.css">
+  <link rel="stylesheet" href="../public/css/styles_add_product.css">
 </head>
 <body>
   <div id="header-placeholder"></div>

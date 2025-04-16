@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>My Bids</title>
-  <link rel="stylesheet" href="css/styles_add_product.css">
-  <link rel="stylesheet" href="css/styles_bids.css">
+  <link rel="stylesheet" href="../public/css/styles_add_product.css">
+  <link rel="stylesheet" href="../public/css/styles_bids.css">
 </head>
 <body>
   <div id="header-placeholder"></div>

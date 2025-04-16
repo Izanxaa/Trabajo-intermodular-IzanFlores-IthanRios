@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Product</title>
-    <link rel="stylesheet" href="css/styles_add_product.css">
+    <link rel="stylesheet" href="../public/css/styles_add_product.css">
 </head>
 <body>
 

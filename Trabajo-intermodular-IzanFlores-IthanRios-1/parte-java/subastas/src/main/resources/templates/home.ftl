@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Blind Auction</title>
-        <link rel="stylesheet" href="css/styles_web.css">
-        <link rel="stylesheet" href="css/styles_add_product.css">
+        <link rel="stylesheet" href="../public/css/styles_web.css">
+        <link rel="stylesheet" href="../public/css/styles_add_product.css">
     </head>
     <body>
 
