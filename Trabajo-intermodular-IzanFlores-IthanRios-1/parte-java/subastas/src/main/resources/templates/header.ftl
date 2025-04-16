@@ -1,4 +1,3 @@
-<!-- header.html -->
 <header class="header">
     <div class="logo">
         <h2>Auction</h2>
