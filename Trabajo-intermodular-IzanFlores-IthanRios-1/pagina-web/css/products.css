@@ -78,6 +78,26 @@ body {
   background-color: #f0683e;
 }
 
+.bid-section {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.bid-section label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.bid-section input[type="number"] {
+  width: 40%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #999;
+  box-sizing: border-box;
+}
+
 @media screen and (max-width: 768px) {
   .product-detail-container {
     flex-direction: column;
