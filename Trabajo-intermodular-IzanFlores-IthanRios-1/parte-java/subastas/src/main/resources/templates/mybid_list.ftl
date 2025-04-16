@@ -14,7 +14,7 @@
 
     <!-- Bid item 1 -->
     <div class="bid-item">
-      <img src="img/producto-pruebas.jpg" alt="NitroPC">
+      <img src="../public/img/producto-pruebas.jpg" alt="NitroPC">
       <div class="bid-info">
         <div class="bid-description">
           <h3>NitroPC</h3>
@@ -30,7 +30,7 @@
 
     <!-- Bid item 2 -->
     <div class="bid-item">
-      <img src="img/gaming-laptop.jpg" alt="Gaming Laptop Pro X500">
+      <img src="../public/img/gaming-laptop.jpg" alt="Gaming Laptop Pro X500">
       <div class="bid-info">
         <div class="bid-description">
           <h3>Gaming Laptop Pro X500</h3>
@@ -46,7 +46,7 @@
 
     <!-- Bid item 3 -->
     <div class="bid-item">
-      <img src="img/office-laptop.jpg" alt="Office Laptop Lite 14">
+      <img src="../public/img/office-laptop.jpg" alt="Office Laptop Lite 14">
       <div class="bid-info">
         <div class="bid-description">
           <h3>Office Laptop Lite 14"</h3>
@@ -68,8 +68,8 @@
   <footer class="footer">
     <p>2025 AuctionHub. All rights reserved.</p>
     <div>
-        <a><img src="img/facebook.jpg" alt="Facebook">Facebook</a>
-        <a><img src="img/instagram.jpg" alt="Instagram">Instagram</a>
+        <a><img src="../public/img/facebook.jpg" alt="Facebook">Facebook</a>
+        <a><img src="../public/img/instagram.jpg" alt="Instagram">Instagram</a>
     </div>
 </footer>
 

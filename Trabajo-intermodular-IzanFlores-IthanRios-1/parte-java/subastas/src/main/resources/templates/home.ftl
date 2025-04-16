@@ -22,50 +22,50 @@
             <div class="container-container-product">
                 <!-- Item 1 -->
                 <div class="product-container">
-                    <img src="img/producto-pruebas.jpg" alt="PC">
+                    <img src="../public/img/producto-pruebas.jpg" alt="PC">
                     <h3>NitroPC</h3>
                     <p>High-performance desktop for gaming lovers.</p>
                     <button onclick="location.href='product1.html'">Bid product</button>
                 </div>
                 <div class="product-container">
-                    <img src="img/gaming-laptop.jpg" alt="PC">
+                    <img src="../public/img/gaming-laptop.jpg" alt="PC">
                     <h3>Gaming Laptop Pro X500</h3>
                     <p>Ultra-fast laptop with advanced cooling.</p>
                     <button onclick="location.href='product2.html'">Bid product</button>
                 </div>
                 <div class="product-container">
-                    <img src="img/office-laptop.jpg" alt="PC">
+                    <img src="../public/img/office-laptop.jpg" alt="PC">
                     <h3>Office Laptop Lite 14"</h3>
                     <p>ILightweight and perfect for daily tasks.</p>
                     <button onclick="location.href='product3.html'">Bid product</button>
                 </div>
                 <div class="product-container">
-                    <img src="img/macbook.jpg" alt="PC">
+                    <img src="../public/img/macbook.jpg" alt="PC">
                     <h3>MacBook Pro M3</h3>
                     <p>Sleek design with M3 chip for professionals.</p>
                     <button onclick="location.href='product4.html'">Bid product</button>
                 </div>
                 <div class="product-container">
-                    <img src="img/super-pc.jpg" alt="PC">
+                    <img src="../public/img/super-pc.jpg" alt="PC">
                     <h3>NitroPC Shadow Core</h3>
                     <p>RGB powerhouse ready for multitasking.</p>
                     <button onclick="location.href='product5.html'">Bid product</button>
                 </div>
                 <div class="product-container">
-                    <img src="img/super-pc2.jpg" alt="PC">
+                    <img src="../public/img/super-pc2.jpg" alt="PC">
                     <h3>NitroPC Silent Storm</h3>
                     <p>Silent beast with optimized airflow.</p>
                     <button onclick="location.href='product6.html'">Bid product</button>
                 </div>
                 <div class="product-container">
-                    <img src="img/super-pc3.jpg" alt="PC">
+                    <img src="../public/img/super-pc3.jpg" alt="PC">
                     <h3>NitroPC Creator Forge</h3>
                     <p>Built for creators and high-res workflows.</p>
                     <button onclick="location.href='product7.html'">Bid product</button>
                 </div>
                 <!-- Item 8 -->
                 <div class="product-container">
-                    <img src="img/mega-pc.jpg" alt="PC">
+                    <img src="../public/img/mega-pc.jpg" alt="PC">
                     <h3>NitroPC Aurora Pulse</h3>
                     <p>Gaming PC with insane LED setup.</p>
                     <button onclick="location.href='product8.html'">Bid product</button>
@@ -76,8 +76,8 @@
     <footer class="footer">
         <p>2025 AuctionHub. All rights reserved.</p>
         <div>
-            <a><img src="img/facebook.jpg" alt="Facebook">Facebook</a>
-            <a><img src="img/instagram.jpg" alt="Instagram">Instagram</a>
+            <a><img src="../public/img/facebook.jpg" alt="Facebook">Facebook</a>
+            <a><img src="../public/img/instagram.jpg" alt="Instagram">Instagram</a>
         </div>
     </footer>
 
