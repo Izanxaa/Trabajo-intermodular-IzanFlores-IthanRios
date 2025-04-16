@@ -19,5 +19,48 @@ public class Main {
         app.get("/signup", ctx -> {
             ctx.render("/templates/signup.ftl");
         });
+
+        app.get("/home", ctx -> {
+            ctx.render("/templates/home.ftl");
+        });
+
+        app.get("/info_bid", ctx -> {
+            ctx.render("/templates/info_bid.ftl");
+        });
+
+        app.get("/menu", ctx -> {
+            ctx.render("/templates/menu.ftl");
+        });
+
+        app.get("/mybids_list", ctx -> {
+            ctx.render("/templates/mybids_list.ftl");
+        });
+
+        app.get("/add_products", ctx -> {
+            ctx.render("/templates/add_products.ftl");
+        });
+
+        app.get("/confirm_product", ctx -> {
+            ctx.render("/templates/confirm_product.ftl");
+        });
+
+        app.get("/control_users", ctx -> {
+            ctx.render("/templates/control_users.ftl");
+        });
+
+        app.get("/signup", ctx -> {
+            ctx.render("/templates/signup.ftl");
+        });
+
+        app.get("/header", ctx -> {
+            ctx.render("/templates/header.ftl");
+        });
+
+        for (int i = 1; i <= 9; i++) {
+            int i2 = i;
+            app.get("/product"+i, ctx -> {
+                ctx.render("/templates/product"+i2+".ftl");
+            });
+        }
     }
 }
