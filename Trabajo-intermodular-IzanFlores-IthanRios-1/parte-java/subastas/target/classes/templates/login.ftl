@@ -12,8 +12,8 @@
     <p>Log in to access the auctions</p>
 
     <form action="" method="POST">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="Email" placeholder="Email *" required>
+        <input type="password" name="Password" placeholder="Password *" required>
         <button type="submit">Log In</button>
     </form>
 

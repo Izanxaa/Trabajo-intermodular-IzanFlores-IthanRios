@@ -8,7 +8,7 @@
 <body>
 
     <div class="container-form">
-        <h1>¡Bienvenido JUAN!</h1>
+        <h1>¡Bienvenido ${nombreUsuario}!</h1>
         <p>¿Qué quieres hacer?</p>
 
         <button onclick="location.href='home'">Ver y Pujar</button>

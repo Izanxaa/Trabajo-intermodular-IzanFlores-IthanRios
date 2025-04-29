@@ -6,6 +6,8 @@ import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,6 +26,30 @@ public class Main {
 
         app.get("/login", ctx -> {
             ctx.render("login.ftl");
+        });
+
+        app.post("/login", ctx -> {
+            String Email = ctx.formParam("Email");
+            String Password = ctx.formParam("Password");
+            try (Connection conn = DBConect.connect()) {
+                String sql = "select * from usuarios where email = ? and contrasena = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                    stmt.setString(1, Email);
+                    stmt.setString(2, Password);
+                    try (ResultSet rs = stmt.executeQuery()) {
+                        if (rs.next()) {
+                            String nombreUsuario = rs.getString("nombre");
+                            ctx.sessionAttribute("nombreUsuario", nombreUsuario);
+                            ctx.redirect("/menu");
+                        } else {
+                            ctx.result("Correo o contraseña incorrectos.");
+                        }
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                ctx.result("Error al conectar con la base de datos.");
+            }
         });
 
         app.get("/singup", ctx -> {
@@ -78,7 +104,15 @@ public class Main {
         });
 
         app.get("/menu", ctx -> {
-            ctx.render("menu.ftl");
+            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+            if (nombreUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
+            Map<String, Object> model = new HashMap<>();
+            model.put("nombreUsuario", nombreUsuario);
+            ctx.render("menu.ftl", model);
+
         });
 
         app.get("/mybid_list", ctx -> {
