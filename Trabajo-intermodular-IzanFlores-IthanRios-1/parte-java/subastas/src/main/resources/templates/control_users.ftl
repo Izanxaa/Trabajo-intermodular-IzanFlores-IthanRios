@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles_form.css">
     <link rel="stylesheet" href="css/styles_add_product.css">
 </head>
 <body>

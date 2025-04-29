@@ -13,6 +13,11 @@
 
         <button onclick="location.href='home'">Ver y Pujar</button>
         <button onclick="location.href='subir-oferta'">Subir Oferta</button>
+
+        <#if tipoUsuario == "Administrador">
+            <button onclick="location.href='control_users'">Gestion Usuarios</button>
+        </#if>
+
         <button onclick="location.href='login'">Salir</button>
     </div>
 </body>

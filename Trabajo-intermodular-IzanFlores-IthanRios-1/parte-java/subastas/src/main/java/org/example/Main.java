@@ -39,7 +39,9 @@ public class Main {
                     try (ResultSet rs = stmt.executeQuery()) {
                         if (rs.next()) {
                             String nombreUsuario = rs.getString("nombre");
+                            String tipoUsuario = rs.getString("tipo_usuario");
                             ctx.sessionAttribute("nombreUsuario", nombreUsuario);
+                            ctx.sessionAttribute("tipoUsuario", tipoUsuario);
                             ctx.redirect("/menu");
                         } else {
                             ctx.result("Correo o contraseña incorrectos.");
@@ -96,48 +98,99 @@ public class Main {
         });
 
         app.get("/home", ctx -> {
+            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+            if (nombreUsuario == null || tipoUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
             ctx.render("home.ftl");
         });
 
         app.get("/info_bid", ctx -> {
+            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+            if (nombreUsuario == null || tipoUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
             ctx.render("info_bid.ftl");
         });
 
         app.get("/menu", ctx -> {
             String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
-            if (nombreUsuario == null) {
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+            if (nombreUsuario == null || tipoUsuario == null) {
                 ctx.redirect("/login");
                 return;
             }
             Map<String, Object> model = new HashMap<>();
             model.put("nombreUsuario", nombreUsuario);
+            model.put("tipoUsuario", tipoUsuario);
             ctx.render("menu.ftl", model);
 
         });
 
         app.get("/mybid_list", ctx -> {
+            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+            if (nombreUsuario == null || tipoUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
             ctx.render("mybid_list.ftl");
+
         });
 
         app.get("/add_product", ctx -> {
+            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+            if (nombreUsuario == null || tipoUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
             ctx.render("add_product.ftl");
         });
 
         app.get("/confirm_product", ctx -> {
+            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+            if (nombreUsuario == null || tipoUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
             ctx.render("confirm_product.ftl");
         });
 
         app.get("/control_users", ctx -> {
+            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+            if (nombreUsuario == null || tipoUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
             ctx.render("control_users.ftl");
         });
 
         app.get("/header", ctx -> {
+            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+            if (nombreUsuario == null || tipoUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
             ctx.render("header.ftl");
         });
 
         for (int i = 1; i <= 9; i++) {
             int i2 = i;
             app.get("/product" + i, ctx -> {
+                String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+                String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+                if (nombreUsuario == null || tipoUsuario == null) {
+                    ctx.redirect("/login");
+                    return;
+                }
                 ctx.render("product" + i2 + ".ftl");
             });
         }
