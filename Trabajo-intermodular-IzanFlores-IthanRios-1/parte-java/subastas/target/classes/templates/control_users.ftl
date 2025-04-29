@@ -12,38 +12,20 @@
 <div class="container">
     <h1>Admin Panel</h1>
     <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
         <tbody>
-        <tr>
-            <td>John Smith</td>
-            <td>johnsmith@mail.com</td>
-            <td>
-                <button class="btn red">Delete</button>
-                <button class="btn blue">Send Warning</button>
-            </td>
-        </tr>
-        <tr>
-            <td>Emily Davis</td>
-            <td>emilydavis@mail.com</td>
-            <td>
-                <button class="btn red">Delete</button>
-                <button class="btn blue">Send Warning</button>
-            </td>
-        </tr>
-        <tr>
-            <td>Michael Johnson</td>
-            <td>mjohnson@mail.com</td>
-            <td>
-                <button class="btn red">Delete</button>
-                <button class="btn blue">Send Warning</button>
-            </td>
-        </tr>
+            <#list usuarios as usuario>
+                <tr>
+                    <td>${usuario.nombre}</td>
+                    <td>${usuario.email}</td>
+                    <td>
+                        <form action="/eliminar-usuario" method="post" style="display:inline;">
+                            <input type="hidden" name="email" value="${usuario.email}">
+                            <button class="btn red" type="submit">Delete</button>
+                        </form>
+                        <button class="btn blue">Send Warning</button>
+                    </td>
+                </tr>
+            </#list>
         </tbody>
     </table>
 </div>

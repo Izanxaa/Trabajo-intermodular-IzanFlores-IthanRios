@@ -6,7 +6,9 @@ import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -73,7 +75,7 @@ public class Main {
 
             try (Connection conn = DBConect.connect()) {
                 String sql = "insert into usuarios (email, nombre, contrasena, tipo_usuario, direccion, fecha_nac) " +
-                        "VALUES (?, ?, ?, ?, ?, ?)"; // "Usuario" default
+                        "values (?, ?, ?, ?, ?, ?)"; // "Usuario" default
 
                 try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                     /* evitar SQL Inyection */
@@ -169,7 +171,30 @@ public class Main {
                 ctx.redirect("/login");
                 return;
             }
-            ctx.render("control_users.ftl");
+            List<Map<String, String>> usuarios = new ArrayList<>();
+            try (Connection conn = DBConect.connect()) {
+                String sql = "select nombre, email, tipo_usuario from usuarios";
+                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                    try (ResultSet rs = stmt.executeQuery()) {
+                        while (rs.next()) {
+                            if ("Administrador".equals(rs.getString("tipo_usuario"))) {
+                                continue;
+                            }
+                            Map<String, String> user = new HashMap<>();
+                            user.put("nombre", rs.getString("nombre"));
+                            user.put("email", rs.getString("email"));
+                            usuarios.add(user);
+                        }
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                ctx.result("Error al obtener los usuarios.");
+                return;
+            }
+            Map<String, Object> model = new HashMap<>();
+            model.put("usuarios", usuarios);
+            ctx.render("control_users.ftl", model);
         });
 
         app.get("/header", ctx -> {
@@ -194,5 +219,29 @@ public class Main {
                 ctx.render("product" + i2 + ".ftl");
             });
         }
+        app.post("/eliminar-usuario", ctx -> {
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+            if (tipoUsuario == null || !tipoUsuario.equals("Administrador")) {
+                ctx.redirect("/login");
+                return;
+            }
+
+            String email = ctx.formParam("email");
+            try (Connection conn = DBConect.connect()) {
+                String sql = "delete from usuarios where email = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                    stmt.setString(1, email);
+                    int filasAfectadas = stmt.executeUpdate();
+                    if (filasAfectadas > 0) {
+                        ctx.redirect("/control_users");
+                    } else {
+                        ctx.result("Usuario no encontrado o no se pudo eliminar.");
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                ctx.result("Error al eliminar el usuario.");
+            }
+        });
     }
 }
