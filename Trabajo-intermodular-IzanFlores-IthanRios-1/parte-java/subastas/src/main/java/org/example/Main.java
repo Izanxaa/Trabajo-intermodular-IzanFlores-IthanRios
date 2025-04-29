@@ -167,7 +167,7 @@ public class Main {
         app.get("/control_users", ctx -> {
             String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
             String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
-            if (nombreUsuario == null || tipoUsuario == null) {
+            if (nombreUsuario == null || tipoUsuario == null || !tipoUsuario.equals("Administrador")) {
                 ctx.redirect("/login");
                 return;
             }
