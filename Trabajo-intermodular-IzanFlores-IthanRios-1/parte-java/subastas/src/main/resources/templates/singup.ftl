@@ -15,7 +15,7 @@
         <input type="password" name="Password" placeholder="Password *" required>
         <input type="email" name="Email" placeholder="Email *" required>
         <input type="Date" name="Dob" placeholder="Date of Birth *" required>
-        <input type="text" name="Direccion" placeholder="Address">
+        <input type="text" name="Address" placeholder="Address">
         <button type="submit">Sign up</button>
     </form>
 

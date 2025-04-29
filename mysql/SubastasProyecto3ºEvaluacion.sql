@@ -11,10 +11,9 @@ create table usuarios (
 	id int primary key auto_increment,
     email varchar(150) not null unique,
     nombre varchar(50) not null,
-    apellido varchar(50),
     contrasena varchar(150) not null,
     tipo_usuario enum("Administrador","Usuario") not null,
-    direccion varchar(150),
+    direccion longtext,
     fecha_nac date
 );
 
@@ -44,3 +43,6 @@ create table productos (
     precio_puja float not null,
     info_puja varchar(500)
  );
+ 
+insert into usuarios (email, nombre, contrasena, tipo_usuario, direccion, fecha_nac)
+values("hola@gmail.com", "root", 1234, "Administrador", "C/ hola", "2000-07-21");

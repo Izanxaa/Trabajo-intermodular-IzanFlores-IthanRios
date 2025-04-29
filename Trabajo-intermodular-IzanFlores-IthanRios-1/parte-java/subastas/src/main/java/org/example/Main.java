@@ -1,6 +1,5 @@
 package org.example;
 import io.javalin.Javalin;
-import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinFreemarker;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
@@ -15,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
         Configuration freemarkerConfig = new Configuration(Configuration.VERSION_2_3_32);
-        freemarkerConfig.setClassForTemplateLoading(Main.class, "/templates"); // carpeta dentro de resources
+        freemarkerConfig.setClassForTemplateLoading(Main.class, "/templates");
         freemarkerConfig.setDefaultEncoding("UTF-8");
         freemarkerConfig.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
 
@@ -130,7 +129,6 @@ public class Main {
             model.put("nombreUsuario", nombreUsuario);
             model.put("tipoUsuario", tipoUsuario);
             ctx.render("menu.ftl", model);
-
         });
 
         app.get("/mybid_list", ctx -> {
