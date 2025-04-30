@@ -6,6 +6,7 @@
         <title>Blind Auction</title>
         <link rel="stylesheet" href="css/styles_web.css">
         <link rel="stylesheet" href="css/styles_add_product.css">
+        <link rel="alternate" type="application/rss+xml" title="Auction RSS" href="rss.xml">
     </head>
     <body>
 
