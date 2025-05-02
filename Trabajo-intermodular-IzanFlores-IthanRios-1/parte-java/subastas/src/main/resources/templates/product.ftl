@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gaming Laptop Pro X500</title>
+  <title>${producto.nombre}</title>
   <link rel="stylesheet" href="css/styles_web.css" />
   <link rel="stylesheet" href="css/products.css" />
   <link rel="stylesheet" href="css/styles_add_product.css" />
@@ -13,20 +13,20 @@
 
 <div class="main-content">
   <div class="product-detail-container">
-    <img src="img/mega-pc.jpg" alt="Gaming Laptop Pro X500" />
+    <img src="/producto/imagen/${producto.id}" alt="${producto.nombre}" />
 
     <div class="product-info">
-      <h2>NitroPC Aurora Pulse</h2>
+      <h2>${producto.nombre}</h2>
       <p class="description">
-        A next-gen gaming rig with synchronized LED lighting and high-end specs, perfect for immersive gaming and stunning setups.
+        ${producto.descripcion}
       </p>
-      <p class="price"><strong>Starting Price:</strong> €2,299.99</p>
+      <p class="price"><strong>Starting Price:</strong> €${producto.precio}</p>
       <div class="bid-section">
         <label for="bidAmount"><strong>Your Bid:</strong></label>
-        <input type="number" id="bidAmount" name="bidAmount" min="2300" step="0.01" required />
+        <input type="number" id="bidAmount" name="bidAmount" min="${producto.precio}" step="0.01" required />
       </div>
-      <button class="submit-button" onclick="location.href='info_bid'">Place Bid</button>
-      <button class="submit-button" onclick="location.href='home'">Back to de bils</button>
+      <button class="submit-button" onclick="location.href='/info_bid'">Place Bid</button>
+      <button class="submit-button" onclick="location.href='/home'">Back to the bids</button>
     </div>
   </div>
 </div>
@@ -40,7 +40,7 @@
 </footer>
 
 <script>
-  fetch("header")
+  fetch("/header")
           .then(res => res.text())
           .then(data => {
             document.getElementById("header-placeholder").innerHTML = data;

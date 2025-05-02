@@ -26,7 +26,7 @@
                 <h3>${producto.nombre}</h3>
                 <p>${producto.descripcion?default("Sin descripción")}</p>
                 <p><strong>Precio: $${producto.precio}</strong></p>
-                <button onclick="location.href='/producto/${producto.id}'">Bid product</button>
+                <button onclick="location.href='/product/${producto.id}'">Bid product</button>
             </div>
         </#list>
     </div>

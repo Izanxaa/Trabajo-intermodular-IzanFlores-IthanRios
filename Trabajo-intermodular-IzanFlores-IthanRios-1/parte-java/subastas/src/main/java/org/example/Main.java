@@ -237,18 +237,48 @@ public class Main {
             ctx.render("header.ftl");
         });
 
-        for (int i = 1; i <= 9; i++) {
-            int i2 = i;
-            app.get("/product" + i, ctx -> {
-                String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
-                String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
-                if (nombreUsuario == null || tipoUsuario == null) {
-                    ctx.redirect("/login");
-                    return;
+        app.get("/product/{id}", ctx -> {
+            String nombreUsuario = ctx.sessionAttribute("nombreUsuario");
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+
+            if (nombreUsuario == null || tipoUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
+
+            String id = ctx.pathParam("id");
+            Map<String, Object> producto = new HashMap<>();
+
+            try (Connection conn = DBConect.connect()) {
+                String sql = "SELECT nombre, precio, descripcion FROM productos WHERE id = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                    stmt.setInt(1, Integer.parseInt(id));
+                    try (ResultSet rs = stmt.executeQuery()) {
+                        if (rs.next()) {
+                            producto.put("id", id);
+                            producto.put("nombre", rs.getString("nombre"));
+                            producto.put("precio", rs.getFloat("precio"));
+                            producto.put("descripcion", rs.getString("descripcion"));
+                        } else {
+                            ctx.status(404).result("Producto no encontrado.");
+                            return;
+                        }
+                    }
                 }
-                ctx.render("product" + i2 + ".ftl");
-            });
-        }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                ctx.status(500).result("Error al cargar el producto.");
+                return;
+            }
+
+            Map<String, Object> model = new HashMap<>();
+            model.put("nombreUsuario", nombreUsuario);
+            model.put("tipoUsuario", tipoUsuario);
+            model.put("producto", producto);
+
+            ctx.render("product.ftl", model);
+        });
+
         app.post("/eliminar-usuario", ctx -> {
             String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
             if (tipoUsuario == null || !tipoUsuario.equals("Administrador")) {
