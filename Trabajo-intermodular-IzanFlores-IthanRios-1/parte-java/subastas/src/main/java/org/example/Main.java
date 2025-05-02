@@ -314,6 +314,48 @@ public class Main {
             }
         });
 
+
+
+        app.post("/product/{id}", ctx -> {
+            String nombreUsuario = ctx.sessionAttribute("nombreUsuario");
+            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+
+            if (nombreUsuario == null || tipoUsuario == null) {
+                ctx.redirect("/login");
+                return;
+            }
+
+            int productId = Integer.parseInt(ctx.pathParam("id"));
+            float bidAmount = Float.parseFloat(ctx.formParam("bidAmount"));
+
+            try (Connection conn = DBConect.connect()) {
+                String selectSql = "SELECT precio FROM productos WHERE id = ?";
+                PreparedStatement selectStmt = conn.prepareStatement(selectSql);
+                selectStmt.setInt(1, productId);
+                ResultSet rs = selectStmt.executeQuery();
+
+                if (rs.next()) {
+                    float currentPrice = rs.getFloat("precio");
+
+                    if (bidAmount > currentPrice) {
+                        String updateSql = "UPDATE productos SET precio = ? WHERE id = ?";
+                        PreparedStatement updateStmt = conn.prepareStatement(updateSql);
+                        updateStmt.setFloat(1, bidAmount);
+                        updateStmt.setInt(2, productId);
+                        updateStmt.executeUpdate();
+
+                        ctx.redirect("/mybid_list");
+                    } else {
+                        ctx.result("La puja debe ser mayor al precio actual.");
+                    }
+                } else {
+                    ctx.result("Producto no encontrado.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                ctx.status(500).result("Error al procesar la puja.");
+            }
+        });
     }
     private static byte[] getImageFromDatabase(String productId) {
         String sql = "SELECT imagen FROM productos WHERE id = ?";
