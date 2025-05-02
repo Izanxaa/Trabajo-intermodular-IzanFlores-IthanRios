@@ -3,6 +3,8 @@ import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinFreemarker;
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
+
+import java.io.ByteArrayInputStream;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class Main {
             config.staticFiles.add("/public");
             config.fileRenderer(freemarker);
         }).start(7000);
+
 
         app.get("/login", ctx -> {
             ctx.render("login.ftl");
@@ -125,11 +128,29 @@ public class Main {
                 ctx.redirect("/login");
                 return;
             }
+            List<Map<String, Object>> productos = new ArrayList<>();
+
+            try (Connection conn = DBConect.connect()) {
+                String sql = "SELECT id, nombre, precio, descripcion FROM productos";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    Map<String, Object> producto = new HashMap<>();
+                    producto.put("id", rs.getInt("id"));
+                    producto.put("nombre", rs.getString("nombre"));
+                    producto.put("precio", rs.getFloat("precio"));
+                    producto.put("descripcion", rs.getString("descripcion"));
+                    productos.add(producto);
+                }
+            }
+
             Map<String, Object> model = new HashMap<>();
             model.put("nombreUsuario", nombreUsuario);
             model.put("tipoUsuario", tipoUsuario);
+            model.put("productos", productos);  // <- Aquí se pasa al FTL
             ctx.render("menu.ftl", model);
-        });
+            });
 
         app.get("/mybid_list", ctx -> {
             String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
@@ -241,5 +262,24 @@ public class Main {
                 ctx.result("Error al eliminar el usuario.");
             }
         });
+        app.get("/producto/imagen/:id", ctx -> {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+
+            try (Connection conn = DBConect.connect()) {
+                String sql = "SELECT imagen FROM productos WHERE id = ?";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+
+                if (rs.next()) {
+                    byte[] imagen = rs.getBytes("imagen");
+                    ctx.contentType("image/jpeg"); // Ajusta si usas png
+                    ctx.result(new ByteArrayInputStream(imagen));
+                } else {
+                    ctx.status(404);
+                }
+            }
+        });
+
     }
 }

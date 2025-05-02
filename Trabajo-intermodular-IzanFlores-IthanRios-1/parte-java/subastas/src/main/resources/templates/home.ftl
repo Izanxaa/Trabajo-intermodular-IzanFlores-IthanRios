@@ -19,58 +19,16 @@
 
         <section class="product-list">
             <h3>Latest Additions</h3>
-        <!-- Items -->
             <div class="container-container-product">
-                <!-- Item 1 -->
-                <div class="product-container">
-                    <img src="/img/producto-pruebas.jpg" alt="PC">
-                    <h3>NitroPC</h3>
-                    <p>High-performance desktop for gaming lovers.</p>
-                    <button onclick="location.href='product1'">Bid product</button>
-                </div>
-                <div class="product-container">
-                    <img src="/img/gaming-laptop.jpg" alt="PC">
-                    <h3>Gaming Laptop Pro X500</h3>
-                    <p>Ultra-fast laptop with advanced cooling.</p>
-                    <button onclick="location.href='product2'">Bid product</button>
-                </div>
-                <div class="product-container">
-                    <img src="/img/office-laptop.jpg" alt="PC">
-                    <h3>Office Laptop Lite 14"</h3>
-                    <p>ILightweight and perfect for daily tasks.</p>
-                    <button onclick="location.href='product3'">Bid product</button>
-                </div>
-                <div class="product-container">
-                    <img src="/img/macbook.jpg" alt="PC">
-                    <h3>MacBook Pro M3</h3>
-                    <p>Sleek design with M3 chip for professionals.</p>
-                    <button onclick="location.href='product4'">Bid product</button>
-                </div>
-                <div class="product-container">
-                    <img src="/img/super-pc.jpg" alt="PC">
-                    <h3>NitroPC Shadow Core</h3>
-                    <p>RGB powerhouse ready for multitasking.</p>
-                    <button onclick="location.href='product5'">Bid product</button>
-                </div>
-                <div class="product-container">
-                    <img src="/img/super-pc2.jpg" alt="PC">
-                    <h3>NitroPC Silent Storm</h3>
-                    <p>Silent beast with optimized airflow.</p>
-                    <button onclick="location.href='product6'">Bid product</button>
-                </div>
-                <div class="product-container">
-                    <img src="/img/super-pc3.jpg" alt="PC">
-                    <h3>NitroPC Creator Forge</h3>
-                    <p>Built for creators and high-res workflows.</p>
-                    <button onclick="location.href='product7'">Bid product</button>
-                </div>
-                <!-- Item 8 -->
-                <div class="product-container">
-                    <img src="/img/mega-pc.jpg" alt="PC">
-                    <h3>NitroPC Aurora Pulse</h3>
-                    <p>Gaming PC with insane LED setup.</p>
-                    <button onclick="location.href='product8'">Bid product</button>
-                </div>
+                <#list productos as producto>
+                    <div class="product-container">
+                        <img src="/producto/imagen/${producto.id}" alt="${producto.nombre}" width="200">
+                        <h3>${producto.nombre}</h3>
+                        <p>${producto.descripcion?default("Sin descripción")}</p>
+                        <p><strong>Precio: $${producto.precio}</strong></p>
+                        <button onclick="location.href='/producto/${producto.id}'">Bid product</button>
+                    </div>
+                </#list>
             </div>
         </section>
 

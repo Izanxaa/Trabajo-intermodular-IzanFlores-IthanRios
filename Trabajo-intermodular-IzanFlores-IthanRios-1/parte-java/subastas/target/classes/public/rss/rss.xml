@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>Auction - Latest Listings</title>
+        <link>http://localhost:8080</link>
+        <description>Latest products added to the Auction platform</description>
+
+        <item>
+            <title>NitroPC - RGB Gaming Beast</title>
+            <link>http://localhost:8080/product1.html</link>
+            <description>High-performance desktop designed for gaming lovers. Starting bid: €899.00</description>
+            <pubDate>Wed, 17 Apr 2025 14:00:00 GMT</pubDate>
+        </item>
+
+        <item>
+            <title>Gaming Laptop Pro X500</title>
+            <link>http://localhost:8080/product2.html</link>
+            <description>Ultra-fast gaming laptop with RTX 4080. Starting bid: €1,299.99</description>
+            <pubDate>Wed, 17 Apr 2025 13:00:00 GMT</pubDate>
+        </item>
+
+        <item>
+            <title>Office Laptop Lite 14\"</title>
+            <link>http://localhost:8080/product3.html</link>
+            <description>Perfect for everyday work and school. Starting bid: €499.00</description>
+            <pubDate>Tue, 16 Apr 2025 19:30:00 GMT</pubDate>
+        </item>
+
+        <item>
+            <title>MacBook Pro M3</title>
+            <link>http://localhost:8080/product4.html</link>
+            <description>Professional power and style with the M3 chip. Starting bid: €1,799.00</description>
+            <pubDate>Tue, 16 Apr 2025 17:00:00 GMT</pubDate>
+        </item>
+
+    </channel>
+</rss>

@@ -172,6 +172,70 @@ textarea {
     background-color: #f0683e;
 }
 
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
+}
+
+.container h1 {
+  text-align: center;
+  color: #e25226;
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tr {
+  border-bottom: 1px solid #ddd;
+}
+
+table td {
+  padding: 14px 16px;
+  vertical-align: middle;
+  text-align: left;
+}
+
+table td:last-child {
+  text-align: right;
+}
+
+.btn {
+  padding: 8px 14px;
+  margin-left: 6px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn.red {
+  background-color: #e25226;
+  color: white;
+}
+
+.btn.red:hover {
+  background-color: #c7431c;
+}
+
+.btn.blue {
+  background-color: #43afda;
+  color: white;
+}
+
+.btn.blue:hover {
+  background-color: #3399cc;
+}
+
+
 .footer {
     background-color: #333;
     color: white;
@@ -194,3 +258,5 @@ textarea {
 .footer a:hover {
     text-decoration: underline;
 }
+
+
