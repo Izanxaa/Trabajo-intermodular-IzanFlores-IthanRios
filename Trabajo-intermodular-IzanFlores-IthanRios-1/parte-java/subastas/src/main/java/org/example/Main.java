@@ -102,14 +102,43 @@ public class Main {
         });
 
         app.get("/home", ctx -> {
-            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
-            String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
-            if (nombreUsuario == null || tipoUsuario == null) {
-                ctx.redirect("/login");
-                return;
+            List<Map<String, Object>> productos = new ArrayList<>();
+            try {
+                String nombreUsuario = ctx.sessionAttribute("nombreUsuario");
+                String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
+                if (nombreUsuario == null || tipoUsuario == null) {
+                    ctx.redirect("/login");
+                    return;
+                }
+
+                try (Connection conn = DBConect.connect()) {
+                    String sql = "SELECT id, nombre, precio, descripcion FROM productos";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ResultSet rs = ps.executeQuery();
+
+                    while (rs.next()) {
+                        Map<String, Object> producto = new HashMap<>();
+                        producto.put("id", rs.getInt("id"));
+                        producto.put("nombre", rs.getString("nombre"));
+                        producto.put("precio", rs.getFloat("precio"));
+                        producto.put("descripcion", rs.getString("descripcion"));
+                        productos.add(producto);
+                    }
+                }
+
+                // Pasamos la lista de productos al modelo para la plantilla
+                Map<String, Object> model = new HashMap<>();
+                model.put("nombreUsuario", nombreUsuario);
+                model.put("tipoUsuario", tipoUsuario);
+                model.put("productos", productos);  // Se pasan los productos con imágenes a la plantilla
+                ctx.render("home.ftl", model);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                ctx.status(500).result("Error al obtener los productos: " + e.getMessage());
             }
-            ctx.render("home.ftl");
         });
+
 
         app.get("/info_bid", ctx -> {
             String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
@@ -122,35 +151,17 @@ public class Main {
         });
 
         app.get("/menu", ctx -> {
-            String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
+            String nombreUsuario = ctx.sessionAttribute("nombreUsuario");
             String tipoUsuario = ctx.sessionAttribute("tipoUsuario");
             if (nombreUsuario == null || tipoUsuario == null) {
                 ctx.redirect("/login");
                 return;
             }
-            List<Map<String, Object>> productos = new ArrayList<>();
-
-            try (Connection conn = DBConect.connect()) {
-                String sql = "SELECT id, nombre, precio, descripcion FROM productos";
-                PreparedStatement ps = conn.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery();
-
-                while (rs.next()) {
-                    Map<String, Object> producto = new HashMap<>();
-                    producto.put("id", rs.getInt("id"));
-                    producto.put("nombre", rs.getString("nombre"));
-                    producto.put("precio", rs.getFloat("precio"));
-                    producto.put("descripcion", rs.getString("descripcion"));
-                    productos.add(producto);
-                }
-            }
-
             Map<String, Object> model = new HashMap<>();
             model.put("nombreUsuario", nombreUsuario);
             model.put("tipoUsuario", tipoUsuario);
-            model.put("productos", productos);  // <- Aquí se pasa al FTL
             ctx.render("menu.ftl", model);
-            });
+        });
 
         app.get("/mybid_list", ctx -> {
             String nombreUsuario =  ctx.sessionAttribute("nombreUsuario");
@@ -262,24 +273,37 @@ public class Main {
                 ctx.result("Error al eliminar el usuario.");
             }
         });
-        app.get("/producto/imagen/:id", ctx -> {
-            int id = Integer.parseInt(ctx.pathParam("id"));
-
-            try (Connection conn = DBConect.connect()) {
-                String sql = "SELECT imagen FROM productos WHERE id = ?";
-                PreparedStatement ps = conn.prepareStatement(sql);
-                ps.setInt(1, id);
-                ResultSet rs = ps.executeQuery();
-
-                if (rs.next()) {
-                    byte[] imagen = rs.getBytes("imagen");
-                    ctx.contentType("image/jpeg"); // Ajusta si usas png
-                    ctx.result(new ByteArrayInputStream(imagen));
-                } else {
-                    ctx.status(404);
-                }
+        app.get("/producto/imagen/{id}", ctx -> {
+            String id = ctx.pathParam("id");
+            byte[] imageBytes = getImageFromDatabase(id);
+            if (imageBytes != null) {
+                ctx.contentType("image/jpeg");
+                ctx.result(imageBytes);
+            } else {
+                ctx.status(404).result("Imagen no encontrada");
             }
         });
 
     }
+    private static byte[] getImageFromDatabase(String productId) {
+        String sql = "SELECT imagen FROM productos WHERE id = ?";
+
+        try (Connection conn = DBConect.connect();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, Integer.parseInt(productId));
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                return rs.getBytes("imagen");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 }
